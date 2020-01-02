@@ -148,9 +148,9 @@ module.exports = {
             });
         }
         if(command === 'gb-points') {
-            const points = await pnt.check(msg.author.username);
-            console.log(points);
-            msg.channel.send(`You have ${await points} points`); 
+            const data = await pnt.check(msg.author.username);
+            console.log(data.points);
+            msg.channel.send(`You have ${await data.points} points`); 
         }
     }
         
