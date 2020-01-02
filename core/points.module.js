@@ -7,8 +7,8 @@ module.exports = {
         db.updatePoints(username, point);
     },
     leaderboard: (users) =>{},
-    check: (username) =>{
-        const points = db.fetchPoints(username);
+    check: async (username) =>{
+        const points = await db.fetchPoints(username);
         return points;
     }
 }
