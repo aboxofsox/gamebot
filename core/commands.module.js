@@ -1,8 +1,8 @@
 const api = require('./api.module.js'),
 db = require('./db.module.js'),
 lib = require('./library.module.js'),
-trivia = require('./trivia.module.js');
-
+trivia = require('./trivia.module.js'),
+pnt = require('./points.module.js');
 const colors = [
     'f5ad42',
     '42f55d',
@@ -146,6 +146,10 @@ module.exports = {
                         msg.channel.send('Looks like nobody got the answer right');
                     });
             });
+        }
+        if(command === 'gb-points') {
+            const points = pnt.check(msg.author.username);
+            msg.channel.send(`You have ${points} points`); 
         }
     }
         

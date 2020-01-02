@@ -8,7 +8,8 @@ app = express(),
 cmd = require('./core/commands.module.js'),
 utlity = require('./utliity/awken.module.js'),
 db = require('./core/db.module.js'),
-bodyParser = require('body-parser');
+bodyParser = require('body-parser'),
+pnt = require('./core/points.module.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -38,7 +39,9 @@ client.on('ready', () =>{
 })
 
 client.on('message', async msg =>{
+    pnt.add(msg.author.username, 1);
     cmd.command(client, msg, prefix, RichEmbed);
+
 
     if(msg.embeds > 0) {
         msg.react('👍')

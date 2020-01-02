@@ -46,5 +46,17 @@ module.exports = {
             if(err) console.error(err);
             console.log(`${username} has updated their favorite game`);
         });
+    },
+    fetchPoints: async(username) =>{
+        const quer = await User.findOne({name: username}).select('points').lean().exec();
+        return query;
+    },
+    updatePoints: (username, points) =>{
+        User.update({name: username}, {
+            points: points
+        }, (err) =>{
+            if(err) console.log(err);
+            console.log(`${username} has earned some points`);
+        });
     }
 }
