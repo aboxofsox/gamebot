@@ -4,6 +4,7 @@ module.exports = {
     add: (username, point) =>{
         let points = db.fetchPoints(username);
         points += point;
+        console.log(`Points before update: ${points}`);
         db.updatePoints(username, point);
     },
     leaderboard: (users) =>{},
