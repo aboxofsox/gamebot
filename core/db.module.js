@@ -48,7 +48,7 @@ module.exports = {
         });
     },
     fetchPoints: async(username) =>{
-        const quer = await User.findOne({name: username}).select('points').lean().exec();
+        const query = await User.findOne({name: username}).select('points').lean().exec();
         return query;
     },
     updatePoints: (username, points) =>{
