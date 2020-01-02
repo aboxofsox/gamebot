@@ -148,7 +148,7 @@ module.exports = {
             });
         }
         if(command === 'gb-points') {
-            const points = pnt.check(msg.author.username);
+            const points = await pnt.check(msg.author.username);
             msg.channel.send(`You have ${points} points`); 
         }
     }
