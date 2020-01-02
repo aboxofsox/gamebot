@@ -2,7 +2,7 @@ const db = require('./db.module.js');
 
 module.exports = {
     add: (username, point) =>{
-        const points = db.fetchPoints(username);
+        let points = db.fetchPoints(username);
         points += point;
         db.updatePoints(username, point);
     },
