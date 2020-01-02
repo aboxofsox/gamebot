@@ -149,7 +149,7 @@ module.exports = {
         }
         if(command === 'gb-points') {
             const points = await pnt.check(msg.author.username);
-            msg.channel.send(`You have ${points} points`); 
+            msg.channel.send(`You have ${await points} points`); 
         }
     }
         
