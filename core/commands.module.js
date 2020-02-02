@@ -19,6 +19,9 @@ const randColors = (colors) =>{
 
     return colors[rand];
 }
+// Variables for trivia
+const questions = require('./questions.json');
+let unusedQuestions = [...questions];
 
 module.exports = {
     command: async (client, msg, prefix, RichEmbed) =>{
@@ -129,9 +132,15 @@ module.exports = {
            
             msg.channel.send(embed);
         }        
+
         if(command === 'gb-trivia') {
-            const quiz = require('./questions.json');
-            const item = quiz[Math.floor(Math.random() * quiz.length)];
+            const rand = Math.floor(Math.random() * unusedQuestions.length);
+            const item = unusedQuestions[rand];
+            unusedQuestions.splice(rand, 1); // remove used question
+            if(unusedQuestions.length === 0){
+                unusedQuestions = [...questions];
+            }
+            console.log(unusedQuestions);
             const filter = response => {
                 return item.answers.toLowerCase() === response.content.toLowerCase();
             }
