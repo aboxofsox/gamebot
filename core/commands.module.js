@@ -14,6 +14,8 @@ const colors = [
     '6bffc9'
 ];
 
+let lfg = false;
+
 const randColors = (colors) =>{
     const rand = Math.floor(Math.random() * colors.length);
 
@@ -155,6 +157,22 @@ module.exports = {
                         msg.channel.send('Looks like nobody got the answer right');
                     });
             });
+        }
+
+        if(commmand === 'gb-party') {
+            const game = args.join('');
+            lfg = true;
+            msg.channel.send(`Looks like ${msg.author.username} wants to play ${game}. Who's down?`);
+            setTimeout(() =>{
+                lfg = false;
+            }, 30000);
+        }
+        if(command === 'gb-join') {
+            if(lfg) {
+                msg.channel.send(`${msg.author.username} is down to play.`);
+            } else {
+                msg.channel.send(`Doesn't seem like anyone is wanting to play anything right now.`);
+            }
         }
     }
         
