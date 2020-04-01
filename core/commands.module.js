@@ -171,7 +171,7 @@ module.exports = {
         }
         if(command === 'gb-join') {
             if(lfg) {
-                if(lobby.includes(msg.author.username) {
+                if(lobby.includes(msg.author.username)) {
                     return msg.channel.reply(`You can't join the same party twice my dude.`);
                 }
                 msg.channel.send(`${msg.author.username} is down to play.`);
