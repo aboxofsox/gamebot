@@ -166,6 +166,7 @@ module.exports = {
             msg.channel.send(`Looks like ${msg.author.username} wants to play ${game}. Who's down?`);
             setTimeout(() =>{
                 lfg = false;
+                lobby = [];
                 msg.channel.send(`The invitation for ${game} has expired!`);
             }, 30000);
         }
