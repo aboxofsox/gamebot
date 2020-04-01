@@ -159,7 +159,7 @@ module.exports = {
             });
         }
 
-        if(commmand === 'gb-party') {
+        if(command === 'gb-party') {
             const game = args.join('');
             lfg = true;
             msg.channel.send(`Looks like ${msg.author.username} wants to play ${game}. Who's down?`);
