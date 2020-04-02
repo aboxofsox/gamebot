@@ -1,7 +1,8 @@
 const api = require('./api.module.js'),
 db = require('./db.module.js'),
 lib = require('./library.module.js'),
-trivia = require('./trivia.module.js');
+trivia = require('./trivia.module.js'),
+party = require('./party.module.js');
 
 const colors = [
     'f5ad42',
@@ -13,9 +14,6 @@ const colors = [
     'ff6b6b',
     '6bffc9'
 ];
-
-let lfg = false;
-let lobby = [];
 
 const randColors = (colors) =>{
     const rand = Math.floor(Math.random() * colors.length);
@@ -160,26 +158,24 @@ module.exports = {
             });
         }
 
-        if(command === 'gb-party') {
-            const game = args.join('');
-            lfg = true;
-            msg.channel.send(`Looks like ${msg.author.username} wants to play ${game}. Who's down?`);
-            setTimeout(() =>{
-                lfg = false;
-                lobby = [];
-                msg.channel.send(`The invitation for ${game} has expired!`);
-            }, 30000);
+        if(command === 'gbp-create') {
+            const name = args.join('');
+            party.create(name, msg.author.username);
+            msg.channel.send(`${msg.author} has started a party! Type !gbp-join ${name} to join.`);
         }
-        if(command === 'gb-join') {
-            if(lfg) {
-                if(lobby.includes(msg.author.username)) {
-                    return msg.channel.send(`${msg.author} you can't join the same party twice my dude.`);
-                }
-                msg.channel.send(`${msg.author.username} is down to play.`);
-                lobby.push(msg.author.username);
-            } else {
-                msg.channel.send(`Doesn't seem like anyone is wanting to play anything right now.`);
-            }
+
+        if(command === 'gbp-join') {
+            const name = args.join('');
+            party.join(name, msg.author.username) ? msg.channel.send(`${msg.author} has joined the party ${name}!`) : msg.channel.send(`${msg.author} that party doesn't seem to exist.`);
+        }
+        if(command === 'gbp-destroy') {
+            const name = args.join('');
+            party.destroy(name, msg.author.username) ? msg.channel.send(`${msg.author}has removed their party.`) : msg.channel.send(`${msg.author} it doesn't appear that you are the owner of that party.`);
+        }
+        if(command === 'gbp-test') {
+            const lobbies = party.list();
+            msg.channel.send(`${msg.author} here are is a list of parties:`);
+            msg.channel.send(lobbies);
         }
     }
         
