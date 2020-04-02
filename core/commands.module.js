@@ -166,7 +166,8 @@ module.exports = {
 
         if(command === 'gbp-join') {
             const name = args.join('');
-            party.join(name, msg.author.username) ? msg.channel.send(`${msg.author} has joined the party ${name}!`) : msg.channel.send(`${msg.author} that party doesn't seem to exist.`);
+            party.join(name, msg.author.username);
+            msg.channel.send(`${msg.author} joined the party.`);
         }
         if(command === 'gbp-destroy') {
             const name = args.join('');
