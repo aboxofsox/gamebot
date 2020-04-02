@@ -14,6 +14,7 @@ module.exports = {
         lobbyNames.forEach(name =>{
             if(name === lobby) {
                 lobbies[name].players.push(player);
+                console.log(lobbies);
                 return true;
             } else {
                 return false;
