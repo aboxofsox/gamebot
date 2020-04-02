@@ -158,22 +158,22 @@ module.exports = {
             });
         }
 
-        if(command === 'gbp-create') {
+        if(command === 'party-create') {
             const name = args.join('');
             party.create(name, msg.author.username);
             msg.channel.send(`${msg.author} has started a party! Type !gbp-join ${name} to join.`);
         }
 
-        if(command === 'gbp-join') {
+        if(command === 'party-join') {
             const name = args.join('');
             party.join(name, msg.author.username);
             msg.channel.send(`${msg.author} joined the party.`);
         }
-        if(command === 'gbp-destroy') {
+        if(command === 'party-destroy') {
             const name = args.join('');
             party.destroy(name, msg.author.username) ? msg.channel.send(`${msg.author}has removed their party.`) : msg.channel.send(`${msg.author} it doesn't appear that you are the owner of that party.`);
         }
-        if(command === 'gbp-test') {
+        if(command === 'party-test') {
             const lobbies = party.list();
             msg.channel.send(`${msg.author} here are is a list of parties:`);
             msg.channel.send(lobbies);
