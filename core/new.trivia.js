@@ -5,6 +5,13 @@ module.exports = {
         const questions = await api.quiz();
         const rand = Math.floor(Math.random() * questions.results.length);
 
-        console.log(questions.results[rand]);
+        const question = {
+            q: questions.results[rand].question,
+            a: questions.results[rand].currect_answer,
+        }
+
+        console.log(question);
+
+        
     }
 }
