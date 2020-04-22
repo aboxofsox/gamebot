@@ -161,7 +161,7 @@ module.exports = {
         if(command === 'gb-trivia2') {
             const question = await trivia2.draw();
             console.log(question);
-            const filter = response =>{
+            const filter = (response, question) =>{
                 return question.a.toLowerCase() === response.content.toLowerCase();
             }
             msg.channel.send(question.q).then(() =>{
