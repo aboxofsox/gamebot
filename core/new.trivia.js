@@ -5,6 +5,6 @@ module.exports = {
         const questions = api.quiz();
         const rand = Math.floor(Math.random() * questions.results.length);
 
-        console.log(questions.results[rand]);
+        console.log(questions);
     }
 }
