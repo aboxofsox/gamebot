@@ -163,13 +163,15 @@ module.exports = {
             const filter = response =>{
                 return question.a.toLowerCase() === response.content.toLowerCase();
             }
-            msg.channel.awaitMessages(filter, {maxMathes: 1, time: 30000, errors: ['time']})
-                .then(collected =>{
-                    msg.channel.send(`${collected.first().author} got the right answer!`);
-                })
-                .catch(collected =>{
-                    msg.channel.send('Looks like nobody got the answer right.');
-                });
+            msg.channel.send(question.q).then(() =>{
+                msg.channel.awaitMessages(filter, {maxMatches: 1, time: 30000, errors: ['time']})
+                    .then(collected =>{
+                        msg.channel.send(`${collected.first().author} got the right answer!`);
+                    })
+                    .catch(collected =>{
+                        msg.channel.send('Looks like nobody got the answer right.');
+                    })
+            })
         }
     }
         
