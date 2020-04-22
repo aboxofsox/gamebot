@@ -159,7 +159,7 @@ module.exports = {
         }
 
         if(command === 'gb-trivia2') {
-            const question = await api.trivia2.draw();
+            const question = await trivia2.draw();
             const filter = response =>{
                 return question.a.toLowerCase() === response.content.toLowerCase();
             }
