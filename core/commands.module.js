@@ -159,7 +159,17 @@ module.exports = {
         }
 
         if(command === 'gb-trivia2') {
-            trivia2.draw();
+            const question = await api.trivia2.draw();
+            const filter = response =>{
+                return question.a.toLowerCase() === response.content.toLowerCase();
+            }
+            msg.channel.awaitMessage(filter, {maxMathes: 1, time: 30000, errors: ['time']})
+                .then(collected =>{
+                    msg.channel.send(`${collected.first().author} got the right answer!`);
+                })
+                .catch(collected =>{
+                    msg.channel.send('Looks like nobody got the answer right.');
+                });
         }
     }
         

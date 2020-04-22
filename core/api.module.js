@@ -30,7 +30,7 @@ module.exports = {
         
     },
     quiz: async () =>{
-        const url = `https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple`;
+        const url = `https://opentdb.com/api.php?amount=50&category=15&difficulty=easy&type=multiple`;
         const res = await fetch(url);
         const json = await res.json();
 
