@@ -163,7 +163,7 @@ module.exports = {
             const filter = response =>{
                 return question.a.toLowerCase() === response.content.toLowerCase();
             }
-            msg.channel.awaitMessage(filter, {maxMathes: 1, time: 30000, errors: ['time']})
+            msg.channel.awaitMessages(filter, {maxMathes: 1, time: 30000, errors: ['time']})
                 .then(collected =>{
                     msg.channel.send(`${collected.first().author} got the right answer!`);
                 })
