@@ -28,5 +28,12 @@ module.exports = {
 
         return json;
         
+    },
+    quiz: async () =>{
+        const url = `https://opentdb.com/api.php?amount=50`;
+        const res = await fetch(url);
+        const json = await res.json();
+
+        return json;
     }
 }

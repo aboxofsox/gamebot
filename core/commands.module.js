@@ -1,7 +1,8 @@
 const api = require('./api.module.js'),
 db = require('./db.module.js'),
 lib = require('./library.module.js'),
-trivia = require('./trivia.module.js');
+trivia = require('./trivia.module.js'),
+trivia2 = require('./new.trivia.js');
 
 const colors = [
     'f5ad42',
@@ -155,6 +156,10 @@ module.exports = {
                         msg.channel.send('Looks like nobody got the answer right');
                     });
             });
+        }
+
+        if(command === 'gb-trivia2') {
+            trivia2.draw();
         }
     }
         
