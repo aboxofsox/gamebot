@@ -7,7 +7,7 @@ module.exports = {
 
         const question = {
             q: questions.results[rand].question,
-            a: questions.results[rand].currect_answer,
+            a: questions.results[rand].correct_answer,
         }
 
         console.log(question);
