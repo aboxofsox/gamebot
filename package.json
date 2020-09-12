@@ -19,6 +19,6 @@
     "is-plain-object": "^3.0.0",
     "metacritic-scraper": "^0.3.4",
     "mongoose": "^5.8.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   }
 }
